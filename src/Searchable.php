@@ -4,7 +4,14 @@ namespace Scout\Solr;
 
 trait Searchable
 {
-    use \Laravel\Scout\Searchable;
+    use \Laravel\Scout\Searchable {
+        bootSearchable as traitBootSearchable;
+    }
+
+    public static function bootSearchable()
+    {
+        self::traitBootSearchable();
+    }
 
     /**
      * Returns the name of the index/core where this data is searchable.
